@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="English Steps: aprende inglés por niveles A1 a A4 con lecciones, vocabulario y quices.">
+<title>English Steps: niveles A1 a A4</title>
+<style>
+:root{--bg:#f4f7fa;--card:#fff;--ink:#17263b;--mute:#5b6b80;--line:#d8e0ea;--ok:#1b8a5a;--bad:#c23b3b;--c1:#12907f;--c2:#c98a00;--c3:#2f63d8;--c4:#7b3fd0;--f:"Trebuchet MS","Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1824;--card:#182435;--ink:#eaf0f7;--mute:#9fb0c4;--line:#2a3a50;--ok:#4cc58d;--bad:#ff7b7b;--c1:#3fcdb9;--c2:#f0b93a;--c3:#7ea2ff;--c4:#b58cff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 var(--f)}
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1,h2,h3{line-height:1.15;margin:0;font-weight:800}
+h1{font-size:2.3rem;letter-spacing:-.02em}
+.sub{color:var(--mute);margin:.5rem 0 1.2rem;max-width:56ch}
+button,input{font:inherit;color:inherit}button{cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--c3);outline-offset:2px}
+.steps{display:flex;flex-direction:column;gap:10px}
+.step{display:flex;align-items:center;gap:14px;text-align:left;background:var(--card);border:1px solid var(--line);border-left:8px solid var(--c);border-radius:6px;padding:14px 16px}
+.step:nth-child(2){margin-left:14px}.step:nth-child(3){margin-left:28px}.step:nth-child(4){margin-left:42px}
+.step b{font-size:1.8rem;color:var(--c);min-width:2.6rem}
+.step span{display:block;color:var(--mute);font-size:.92rem;font-weight:400}
+.bar{height:6px;background:var(--line);border-radius:3px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--c)}
+.grow{flex:1}
+.back{background:none;border:0;color:var(--mute);padding:6px 0;margin-bottom:8px}
+.tag{display:inline-block;font-weight:800;color:#fff;background:var(--c);padding:2px 10px;border-radius:4px;margin-bottom:8px}
+.lessons{display:grid;gap:10px;margin-top:16px}
+.les{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:14px 16px;text-align:left;width:100%}
+.les.ex{border:2px dashed var(--c)}
+.les em{font-style:normal;color:var(--ok);font-weight:700}
+.box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:16px;margin-top:14px}
+.vocab{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.vocab div{border-bottom:1px solid var(--line);padding:4px 0}.vocab small{color:var(--mute);display:block}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin-top:8px}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--card))}
+.main-btn{background:var(--c);color:#fff;border:0;border-radius:6px;padding:11px 18px;font-weight:700;margin-top:16px}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.ghost{background:none;border:1px solid var(--line);border-radius:6px;padding:8px 14px;color:var(--mute)}
+.say{background:none;border:1px solid var(--line);border-radius:50%;width:30px;height:30px;padding:0;float:right}
+.nm{border:1px solid var(--line);background:var(--card);border-radius:6px;padding:9px 12px;width:100%;max-width:340px;margin-bottom:16px}
+.err{color:var(--bad);min-height:1.4em;margin:8px 0 0;font-size:.95rem}
+.link{background:none;border:0;color:var(--c3);padding:6px 0;text-decoration:underline}
+.hide{display:none}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var L=[
+{id:"A1",n:"Principiante",c:"var(--c1)",l:[
+{t:"Saludos y verbo to be",e:"Usa I am, you are, he/she is. Ejemplo: I am Ana. She is a teacher.",v:[["Hello","Hola"],["Good morning","Buenos días"],["Nice to meet you","Mucho gusto"],["Goodbye","Adiós"]],q:[["She ___ a student.",["am","is","are"],1],["I ___ from Colombia.",["am","is","are"],0],["___ to meet you!",["Nice","Good","Hello"],0]]},
+{t:"Números y colores",e:"Los colores van antes del sustantivo: a red car (un carro rojo).",v:[["one","uno"],["ten","diez"],["blue","azul"],["green","verde"]],q:[["¿Cómo se dice «rojo»?",["red","blue","green"],0],["Seven va después de...",["five","six","eight"],1],["an apple (verde)",["green","red","blue"],0]]},
+{t:"La familia",e:"Usa my, your, his, her: This is my mother.",v:[["mother","madre"],["father","padre"],["sister","hermana"],["brother","hermano"]],q:[["La esposa de tu padre es tu...",["sister","mother","aunt"],1],["Tom has a brother. ___ name is Leo.",["Her","His","My"],1],["«Hermana» en inglés:",["sister","brother","mother"],0]]},
+{t:"Días y meses",e:"Los días y meses se escriben con mayúscula: on Monday, in January.",v:[["Monday","lunes"],["Friday","viernes"],["January","enero"],["December","diciembre"]],q:[["El día después de Monday:",["Sunday","Tuesday","Friday"],1],["«Enero» =",["January","June","July"],0],["Forma correcta:",["on monday","on Monday","in Monday"],1]]}]},
+{id:"A2",n:"Elemental",c:"var(--c2)",l:[
+{t:"Rutina diaria",e:"En presente simple, he/she/it lleva -s: She wakes up at 6.",v:[["wake up","despertarse"],["have breakfast","desayunar"],["go to work","ir al trabajo"],["go to bed","acostarse"]],q:[["He ___ to school every day.",["go","goes","going"],1],["I ___ breakfast at 7.",["have","has","having"],0],["They ___ TV at night.",["watches","watch","watching"],1]]},
+{t:"Pasado simple",e:"Verbos regulares: -ed (played). Irregulares: go → went.",v:[["yesterday","ayer"],["last week","la semana pasada"],["went","fui / fue"],["bought","compré / compró"]],q:[["I ___ to the park yesterday.",["go","went","goed"],1],["She ___ football last week.",["played","play","plays"],0],["Pasado de buy:",["buyed","bought","buys"],1]]},
+{t:"Pedir comida",e:"Usa Can I have...? / I'd like... / How much is it?",v:[["menu","menú"],["bill","cuenta"],["water","agua"],["delicious","delicioso"]],q:[["Forma cortés de pedir:",["Give me water","I'd like some water","Water now"],1],["Para preguntar el precio:",["How much is it?","How many is it?","What is it?"],0],["«La cuenta» =",["menu","bill","tip"],1]]},
+{t:"Habilidades con can",e:"can + verbo base: I can swim. Negativo: She can't drive.",v:[["swim","nadar"],["drive","conducir"],["sing","cantar"],["cook","cocinar"]],q:[["She ___ speak English.",["can","cans","is can"],0],["Negativo de can:",["can't","don't can","not can"],0],["I ___ swim.",["can to","can","cans"],1]]}]},
+{id:"A3",n:"Intermedio",c:"var(--c3)",l:[
+{t:"Present perfect",e:"have/has + participio: I have visited Cali. Sirve para experiencias.",v:[["ever","alguna vez"],["never","nunca"],["already","ya"],["yet","todavía (no)"]],q:[["I ___ never eaten sushi.",["has","have","am"],1],["She has ___ her homework.",["finish","finished","finishing"],1],["Have you ___ been to Paris?",["ever","yet","never"],0]]},
+{t:"Planes futuros",e:"going to para planes; will para decisiones y predicciones.",v:[["plan","plan"],["appointment","cita"],["maybe","quizás"],["soon","pronto"]],q:[["We ___ visit grandma tomorrow (plan).",["are going to","did","have"],0],["It's cold. I ___ close the window.",["will","went","am going"],0],["«Maybe» =",["quizás","siempre","nunca"],0]]},
+{t:"Comparativos",e:"Adjetivo corto + -er: taller. Largo: more interesting than.",v:[["bigger","más grande"],["cheaper","más barato"],["more expensive","más caro"],["better","mejor"]],q:[["A car is ___ than a bike.",["fast","faster","fastest"],1],["This book is ___ interesting than that one.",["more","most","much"],0],["Comparativo de good:",["gooder","better","best"],1]]},
+{t:"Should, must, have to",e:"should = consejo; must = obligación fuerte; have to = obligación externa.",v:[["advice","consejo"],["rule","regla"],["allowed","permitido"],["necessary","necesario"]],q:[["You ___ study more (consejo).",["should","must be","are"],0],["You ___ stop at a red light (regla).",["should","must","can"],1],["She ___ wear a uniform at school.",["have to","has to","having to"],1]]}]},
+{id:"A4",n:"Avanzado",c:"var(--c4)",l:[
+{t:"Condicionales",e:"1.º: If it rains, I will stay home. 2.º: If I had money, I would travel.",v:[["unless","a menos que"],["provided that","siempre que"],["whether","si (duda)"],["otherwise","de lo contrario"]],q:[["If I ___ rich, I would buy a house.",["am","were","will be"],1],["If she studies, she ___ pass.",["will","would","did"],0],["«Unless» significa:",["if not","because","although"],0]]},
+{t:"Voz pasiva",e:"be + participio: The report was written by Ana.",v:[["written","escrito"],["built","construido"],["delivered","entregado"],["discovered","descubierto"]],q:[["English ___ in many countries.",["speaks","is spoken","speaking"],1],["The house ___ built in 1990.",["is","was","has"],1],["Pasiva = be + ___",["infinitivo","participio","-ing"],1]]},
+{t:"Estilo indirecto",e:"Retrocede el tiempo: «I am tired» → She said she was tired.",v:[["said","dijo"],["told","le dijo a"],["asked","preguntó"],["explained","explicó"]],q:[["«I like pizza» → He said he ___ pizza.",["likes","liked","will like"],1],["She ___ me she was late.",["said","told","spoke"],1],["«I will come» → He said he ___ come.",["will","would","can"],1]]},
+{t:"Phrasal verbs",e:"Verbo + partícula cambia el significado: give up = rendirse.",v:[["give up","rendirse"],["look after","cuidar"],["turn down","rechazar"],["carry on","continuar"]],q:[["Don't ___ up! Keep trying.",["give","take","look"],0],["She ___ after her little brother.",["looks","gives","turns"],0],["He turned ___ the job offer.",["down","on","in"],0]]}]}];
+
+var P={},NAME="",USER="",DB={users:{}},MODE="login";
+try{DB=JSON.parse(localStorage.getItem("es-db")||'{"users":{}}');USER=localStorage.getItem("es-ses")||""}catch(x){}
+if(!DB||!DB.users)DB={users:{}};
+var OKS=true;try{localStorage.setItem("es-t","1")}catch(x){OKS=false}
+function save(){try{if(USER&&DB.users[USER])DB.users[USER].p=P;localStorage.setItem("es-db",JSON.stringify(DB));localStorage.setItem("es-ses",USER)}catch(x){}}
+function load(){var u=DB.users[USER];P=u.p||{};NAME=u.name}
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return"&#"+c.charCodeAt(0)+";"})}
+function hash(t){
+ try{return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")})}
+ catch(e){var h=5381;for(var i=0;i<t.length;i++)h=(h*33^t.charCodeAt(i))>>>0;return Promise.resolve("f"+h)}}
+function auth(msg){
+ var reg=MODE=="reg";
+ var h='<h1>English Steps</h1><p class="sub">Inicia sesión para guardar tu avance en cada nivel.</p><div class="box" style="--c:var(--c3)"><h2 style="font-size:1.4rem;margin-bottom:12px">'+(reg?'Crear cuenta':'Iniciar sesión')+'</h2><div onkeydown="if(event.key===\'Enter\')go(event)">';
+ if(reg)h+='<input class="nm" id="fn" placeholder="Nombre completo" aria-label="Nombre completo" autocomplete="name" required><br>';
+ h+='<input class="nm" id="fu" placeholder="Usuario" aria-label="Usuario" autocomplete="username" autocapitalize="none" required><br><input class="nm" id="fp" type="password" placeholder="Contraseña" aria-label="Contraseña" autocomplete="'+(reg?'new-password':'current-password')+'" required><br>';
+ if(reg)h+='<input class="nm" id="fp2" type="password" placeholder="Repite la contraseña" aria-label="Repite la contraseña" autocomplete="new-password" required><br>';
+ h+='<div class="err" role="alert">'+(msg||'')+'</div><button class="main-btn" type="button" onclick="go(event)">'+(reg?'Registrarme':'Entrar')+'</button></div><button class="link" onclick="MODE=\''+(reg?'login':'reg')+'\';auth()">'+(reg?'Ya tengo cuenta: iniciar sesión':'No tengo cuenta: registrarme')+'</button></div><p class="sub" style="font-size:.9rem">Las cuentas se guardan en este navegador y dispositivo.'+(OKS?'':' <b>Atención: este navegador bloquea el almacenamiento; tu cuenta y tu avance se perderán al cerrar la página. Abre el archivo directamente en tu navegador o desde tu enlace de GitHub Pages.</b>')+'</p>';
+ app.innerHTML=h;goTop()}
+function go(ev){
+ if(ev&&ev.preventDefault)ev.preventDefault();
+ var u=document.getElementById("fu").value.trim().toLowerCase(),pw=document.getElementById("fp").value,reg=MODE=="reg";
+ if(!/^[a-z0-9._-]{3,20}$/.test(u))return auth("El usuario debe tener 3 a 20 caracteres: letras, números, punto o guion."),false;
+ if(pw.length<6)return auth("La contraseña debe tener al menos 6 caracteres."),false;
+ if(reg){
+  var nm=document.getElementById("fn").value.trim();
+  if(!nm)return auth("Escribe tu nombre."),false;
+  if(pw!=document.getElementById("fp2").value)return auth("Las contraseñas no coinciden."),false;
+  if(DB.users[u])return auth("Ese usuario ya existe. Elige otro."),false;
+  var salt=Math.random().toString(36).slice(2)+Date.now().toString(36);
+  hash(salt+pw).then(function(hx){DB.users[u]={name:nm,salt:salt,hash:hx,p:{}};USER=u;load();save();home()}).catch(function(){auth("No se pudo crear la cuenta. Inténtalo de nuevo.")})
+ }else{
+  var r=DB.users[u];
+  if(!r)return auth("Usuario o contraseña incorrectos."),false;
+  hash(r.salt+pw).then(function(hx){if(hx!=r.hash)return auth("Usuario o contraseña incorrectos.");USER=u;load();save();home()}).catch(function(){auth("No se pudo iniciar sesión. Inténtalo de nuevo.")})
+ }
+ return false}
+function logout(){save();USER="";P={};NAME="";try{localStorage.setItem("es-ses","")}catch(x){}MODE="login";auth()}
+var app=document.getElementById("app");
+function done(i){return L[i].l.filter(function(_,j){return P[i+"-"+j]!=null}).length}
+function goTop(){window.scrollTo(0,0)}
+
+function home(){
+ var h='<h1>English Steps</h1><p class="sub">Cuatro niveles, de A1 a A4. Cada nivel tiene cuatro lecciones con vocabulario y quiz, y un examen final. Empieza por A1 y sube un escalón a la vez.</p>';
+ h+='<p style="margin:0 0 16px">Hola, <b>'+esc(NAME)+'</b> <button class="ghost" style="margin-left:8px;padding:4px 10px" onclick="logout()">Cerrar sesión</button></p><div class="steps">';
+ L.forEach(function(x,i){var d=done(i),n=x.l.length;h+='<button class="step" style="--c:'+x.c+'" onclick="level('+i+')"><b>'+x.id+'</b><div class="grow">'+x.n+'<span>'+d+' de '+n+' lecciones'+(P[i+"-x"]!=null?' · examen aprobado':'')+'</span><div class="bar"><i style="width:'+d/n*100+'%"></i></div></div></button>'});
+ h+='</div><div class="row"><button class="ghost" onclick="report()" id="rp">Copiar mi reporte para el docente</button><button class="ghost" onclick="reset()">Borrar mi progreso</button></div>';
+ app.innerHTML=h;goTop()}
+
+function level(i){
+ var x=L[i],h='<button class="back" onclick="home()">‹ Niveles</button><div style="--c:'+x.c+'"><span class="tag">'+x.id+'</span><h2>'+x.n+'</h2><div class="lessons">';
+ x.l.forEach(function(s,j){var r=P[i+"-"+j];h+='<button class="les" onclick="lesson('+i+','+j+')"><span>'+s.t+'</span>'+(r!=null?'<em>'+r+'/'+s.q.length+' ✓</em>':'<span style="color:var(--mute)">Empezar</span>')+'</button>'});
+ var e=P[i+"-x"];
+ h+='<button class="les ex" onclick="exam('+i+')"><span>Examen final '+x.id+'<br><small style="color:var(--mute)">6 preguntas · se aprueba con 4</small></span>'+(e!=null?'<em>'+e+'/6'+(e>=4?' ✓':'')+'</em>':'<span style="color:var(--mute)">Empezar</span>')+'</button>';
+ app.innerHTML=h+'</div></div>';goTop()}
+
+function say(w){try{var u=new SpeechSynthesisUtterance(w);u.lang="en-US";speechSynthesis.cancel();speechSynthesis.speak(u)}catch(x){}}
+
+function lesson(i,j){
+ var x=L[i],s=x.l[j],h='<button class="back" onclick="level('+i+')">‹ '+x.id+'</button><div style="--c:'+x.c+'"><span class="tag">'+x.id+'</span><h2>'+s.t+'</h2>';
+ h+='<div class="box"><p style="margin:0">'+s.e+'</p></div><div class="box"><h3 style="margin-bottom:8px">Vocabulario</h3><div class="vocab">';
+ s.v.forEach(function(w){h+='<div><button class="say" aria-label="Escuchar '+w[0]+'" onclick="say(\''+w[0]+'\')">🔊</button>'+w[0]+'<small>'+w[1]+'</small></div>'});
+ app.innerHTML=h+'</div></div><button class="main-btn" onclick="quiz('+i+','+j+')">Hacer el quiz</button></div>';goTop()}
+
+var Q;
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function quiz(i,j){Q={i:i,k:0,s:0,key:i+"-"+j,qs:L[i].l[j].q,back:"lesson("+i+","+j+")",again:"quiz("+i+","+j+")",ex:0};ask()}
+function exam(i){var pool=[];L[i].l.forEach(function(s){pool=pool.concat(s.q)});Q={i:i,k:0,s:0,key:i+"-x",qs:shuffle(pool).slice(0,6),back:"level("+i+")",again:"exam("+i+")",ex:1};ask()}
+function ask(){
+ var x=L[Q.i],q=Q.qs[Q.k];
+ var h='<button class="back" onclick="'+Q.back+'">‹ Salir</button><div style="--c:'+x.c+'"><span class="tag">'+x.id+(Q.ex?' · Examen':'')+'</span><div class="box"><small style="color:var(--mute)">Pregunta '+(Q.k+1)+' de '+Q.qs.length+'</small><h3 style="margin:6px 0 4px">'+q[0]+'</h3>';
+ q[1].forEach(function(o,n){h+='<button class="opt" onclick="pick('+n+')">'+o+'</button>'});
+ app.innerHTML=h+'<button class="main-btn hide" id="nx" onclick="next()">'+(Q.k+1<Q.qs.length?'Siguiente':'Ver resultado')+'</button></div></div>';goTop()}
+function pick(n){
+ var q=Q.qs[Q.k];
+ if(!document.getElementById("nx").classList.contains("hide"))return;
+ document.querySelectorAll(".opt").forEach(function(e,m){e.disabled=true;if(m==q[2])e.classList.add("ok");else if(m==n)e.classList.add("bad")});
+ if(n==q[2])Q.s++;
+ document.getElementById("nx").classList.remove("hide")}
+function next(){
+ Q.k++;if(Q.k<Q.qs.length)return ask();
+ if(P[Q.key]==null||Q.s>P[Q.key])P[Q.key]=Q.s;save();
+ var x=L[Q.i],all=Q.qs.length,pass=Q.ex?Q.s>=4:Q.s==all;
+ app.innerHTML='<div style="--c:'+x.c+'"><span class="tag">'+x.id+'</span><h2>'+(pass?'¡Muy bien!':'Sigue practicando')+'</h2><div class="box"><h3>'+Q.s+' de '+all+' correctas</h3><p style="margin:.4rem 0 0;color:var(--mute)">'+(Q.ex?(pass?'Aprobaste el examen de '+x.id+'.':'Necesitas 4 para aprobar. Repasa las lecciones e inténtalo de nuevo.'):(pass?'Pasa a la siguiente lección.':'Repasa el vocabulario y repite el quiz.'))+'</p></div><div class="row"><button class="main-btn" style="margin:0" onclick="level('+Q.i+')">Ver lecciones</button><button class="ghost" onclick="'+Q.again+'">Repetir</button></div></div>';goTop()}
+
+function report(){
+ var t="Reporte English Steps\nEstudiante: "+NAME+" (usuario: "+USER+")\n";
+ L.forEach(function(x,i){t+=x.id+": lecciones "+done(i)+"/"+x.l.length+x.l.map(function(s,j){return P[i+"-"+j]!=null?" ["+P[i+"-"+j]+"/"+s.q.length+"]":" [-]"}).join("")+" · examen "+(P[i+"-x"]!=null?P[i+"-x"]+"/6":"pendiente")+"\n"});
+ var b=document.getElementById("rp");
+ try{navigator.clipboard.writeText(t).then(function(){b.textContent="Reporte copiado: pégalo en tu mensaje"},function(){prompt("Copia tu reporte:",t)})}catch(x){prompt("Copia tu reporte:",t)}}
+function reset(){if(confirm("¿Borrar tu progreso en este dispositivo?")){P={};save();home()}}
+if(USER&&DB.users[USER]){load();home()}else auth();
+</script>
+</body>
+</html>
